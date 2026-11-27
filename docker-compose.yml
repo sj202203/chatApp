@@ -1,0 +1,14 @@
+services:
+
+  consumerDb:
+    image: yugabytedb/yugabyte:latest
+    command: bin/yugabyted start --base_dir=/mnt/master --daemon=false
+    container_name: consumerDb
+    volumes:
+      - consumerDb:/mnt/master
+    ports:
+      - "5436:5433"
+    restart: unless-stopped
+
+volumes:
+  consumerDb:
